@@ -14,7 +14,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Sql(scripts = "classpath:integrationTestData.sql")
-class IntegrationTest {
+class CarIT {
     
     @Autowired
     private TestRestTemplate restTemplate;
