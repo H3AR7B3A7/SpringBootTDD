@@ -7,6 +7,7 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Getter
@@ -16,7 +17,9 @@ public class Car {
     @Id
     @GeneratedValue
     private Long id;
+    @NotBlank(message = "Name is mandatory")
     private String name;
+    @NotBlank(message = "Type is mandatory")
     private String type;
 
     public Car(String name, String type) {
