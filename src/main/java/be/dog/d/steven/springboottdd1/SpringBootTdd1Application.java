@@ -11,5 +11,4 @@ public class SpringBootTdd1Application {
     public static void main(String[] args) {
         SpringApplication.run(SpringBootTdd1Application.class, args);
     }
-
 }

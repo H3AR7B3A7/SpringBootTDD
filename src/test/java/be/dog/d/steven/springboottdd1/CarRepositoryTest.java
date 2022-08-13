@@ -1,13 +1,13 @@
 package be.dog.d.steven.springboottdd1;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @DataJpaTest
 class CarRepositoryTest {
@@ -17,11 +17,11 @@ class CarRepositoryTest {
 
     @Autowired
     private TestEntityManager entityManager;
-    
+
     @Nested
     @DisplayName("Given a car")
     class CarTest {
-        
+
         @Nested
         @DisplayName("When the car is saved")
         class ReturnCarTest {

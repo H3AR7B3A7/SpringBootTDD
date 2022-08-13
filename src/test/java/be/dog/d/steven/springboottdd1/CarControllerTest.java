@@ -1,5 +1,11 @@
 package be.dog.d.steven.springboottdd1;
 
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.BDDMockito.given;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -7,12 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
-
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.BDDMockito.given;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest
 class CarControllerTest {
@@ -22,7 +22,7 @@ class CarControllerTest {
 
     @MockBean
     private CarService carService;
-    
+
     @Nested
     @DisplayName("Given a car")
     class CarTest {
@@ -49,8 +49,7 @@ class CarControllerTest {
             void getCar_shouldReturnNotFound() throws Exception {
                 given(carService.getCarDetails(anyString())).willThrow(new CarNotFoundException("someName"));
 
-                mockMvc.perform(get("/cars/leaf"))
-                        .andExpect(status().isNotFound());
+                mockMvc.perform(get("/cars/leaf")).andExpect(status().isNotFound());
             }
         }
     }

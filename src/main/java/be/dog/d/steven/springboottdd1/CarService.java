@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class CarService {
     private final CarRepository carRepository;
-    
+
     @Cacheable("cars")
     public Car getCarDetails(String name) {
         Car car = carRepository.findByName(name);

@@ -1,5 +1,9 @@
 package be.dog.d.steven.springboottdd1;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.BDDMockito.given;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -8,19 +12,14 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.BDDMockito.given;
-
 @ExtendWith(MockitoExtension.class)
 class CarServiceTest {
-    
+
     @Mock
     private CarRepository carRepository;
-    
+
     private CarService carService;
-    
-    
+
     @Nested
     @DisplayName("Given a car")
     class CarTest {
@@ -28,7 +27,7 @@ class CarServiceTest {
         void setUp() {
             carService = new CarService(carRepository);
         }
-        
+
         @Nested
         @DisplayName("When the car is present")
         class ExistingCarTest {
@@ -43,7 +42,7 @@ class CarServiceTest {
                 assertEquals("hybrid", car.getType());
             }
         }
-        
+
         @Nested
         @DisplayName("When the car is NOT present")
         class MissingCarTest {
