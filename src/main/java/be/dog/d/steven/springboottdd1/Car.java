@@ -10,16 +10,17 @@ import lombok.Setter;
 
 @Entity
 @Getter
-@Setter
 @NoArgsConstructor
 public class Car {
     @Id
     @GeneratedValue
     private Long id;
 
+    @Setter
     @NotBlank(message = "Name is mandatory")
     private String name;
 
+    @Setter
     @NotBlank(message = "Type is mandatory")
     private String type;
 
