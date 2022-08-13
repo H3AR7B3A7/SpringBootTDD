@@ -1,28 +1,28 @@
 package be.dog.d.steven.springboottdd1;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.jdbc.Sql;
-
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@Sql(scripts = "classpath:integrationTestData.sql")
+@Import(ITConfig.class)
 class CarIT {
-    
+
     @Autowired
     private TestRestTemplate restTemplate;
-    
+
     @Nested
     @DisplayName("Given a car")
     class CarTest {
-        
+
         @Nested
         @DisplayName("When the car is present")
         class ExistingCarTest {
